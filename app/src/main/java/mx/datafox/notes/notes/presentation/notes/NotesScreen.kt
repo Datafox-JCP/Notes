@@ -41,6 +41,7 @@ import androidx.navigation.NavController
 import kotlinx.coroutines.launch
 import mx.datafox.notes.notes.presentation.notes.components.NoteItem
 import mx.datafox.notes.notes.presentation.notes.components.OrderSection
+import mx.datafox.notes.notes.presentation.util.Screen
 
 @OptIn(ExperimentalMaterial3Api::class)
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
@@ -56,7 +57,7 @@ fun NotesScreen(
     Scaffold(
         floatingActionButton = {
             FloatingActionButton(onClick = {
-
+                navController.navigate(Screen.AddEditNoteScreen.route)
             },
             containerColor = MaterialTheme.colorScheme.primary
             ) {
@@ -80,8 +81,8 @@ fun NotesScreen(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Text(
-                   text = "Idea...",
-                   style = MaterialTheme.typography.titleSmall
+                   text = "Ideas...",
+                   style = MaterialTheme.typography.headlineMedium
                 )
                 IconButton(
                     onClick = {
@@ -119,7 +120,10 @@ fun NotesScreen(
                         modifier = Modifier
                             .fillMaxWidth()
                             .clickable {
-
+                                navController.navigate(
+                                    Screen.AddEditNoteScreen.route +
+                                            "?noteId=${note.id}&noteColor=${note.color}"
+                                )
                             },
                         onDeleteClick = {
                             viewModel.onEvent(NotesEvent.DeleteNote(note))
