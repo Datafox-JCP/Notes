@@ -9,6 +9,7 @@ import dagger.hilt.components.SingletonComponent
 import mx.datafox.notes.notes.data.repository.NoteRepositoryImpl
 import mx.datafox.notes.notes.data.source.NoteDatabase
 import mx.datafox.notes.notes.domain.repository.NoteRepository
+import mx.datafox.notes.notes.domain.use_case.AddNoteUseCase
 import mx.datafox.notes.notes.domain.use_case.DeleteNoteUseCase
 import mx.datafox.notes.notes.domain.use_case.GetNotesUseCase
 import mx.datafox.notes.notes.domain.use_case.NoteUseCases
@@ -39,8 +40,8 @@ object AppModule {
     fun provideNoteUseCases(repository: NoteRepository): NoteUseCases {
         return NoteUseCases(
             getNotes = GetNotesUseCase(repository),
-            deleteNote = DeleteNoteUseCase(repository)
-//            addNote = AddNote(repository),
+            deleteNote = DeleteNoteUseCase(repository),
+            addNote = AddNoteUseCase(repository),
 //            getNote = GetNote(repository)
         )
     }
