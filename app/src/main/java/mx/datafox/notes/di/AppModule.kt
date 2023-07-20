@@ -11,6 +11,7 @@ import mx.datafox.notes.notes.data.source.NoteDatabase
 import mx.datafox.notes.notes.domain.repository.NoteRepository
 import mx.datafox.notes.notes.domain.use_case.AddNoteUseCase
 import mx.datafox.notes.notes.domain.use_case.DeleteNoteUseCase
+import mx.datafox.notes.notes.domain.use_case.GetNoteUseCase
 import mx.datafox.notes.notes.domain.use_case.GetNotesUseCase
 import mx.datafox.notes.notes.domain.use_case.NoteUseCases
 import javax.inject.Singleton
@@ -42,7 +43,7 @@ object AppModule {
             getNotes = GetNotesUseCase(repository),
             deleteNote = DeleteNoteUseCase(repository),
             addNote = AddNoteUseCase(repository),
-//            getNote = GetNote(repository)
+            getNote = GetNoteUseCase(repository)
         )
     }
 }
